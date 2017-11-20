@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Dashboard</h1>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -12,11 +17,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @forelse ($usuarios as $user)
-                        <li>{{ $user->name }}</li>
-                    @empty
-                        <p>No users</p>
-                    @endforelse
                 </div>
             </div>
         </div>
