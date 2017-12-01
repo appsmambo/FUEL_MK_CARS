@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2017 a las 01:15:40
--- Versión del servidor: 10.1.28-MariaDB
--- Versión de PHP: 7.1.11
+-- Tiempo de generación: 11-11-2017 a las 21:30:26
+-- Versión del servidor: 10.1.25-MariaDB
+-- Versión de PHP: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,8 +19,23 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `fuel_mk_cars`
+-- Base de datos: `control_combustible`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `combustible_tipo`
+--
+
+CREATE TABLE `combustible_tipo` (
+  `id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `descripcion` varchar(50) NOT NULL,
+  `simblo` varchar(10) NOT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -53,77 +68,6 @@ CREATE TABLE `forma_pago` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `descripcion` varchar(50) NOT NULL,
   `simbolo` varchar(10) NOT NULL,
-  `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `migrations`
---
-
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2016_08_07_145904_add_table_cms_apicustom', 1),
-(2, '2016_08_07_150834_add_table_cms_dashboard', 1),
-(3, '2016_08_07_151210_add_table_cms_logs', 1),
-(4, '2016_08_07_151211_add_details_cms_logs', 1),
-(5, '2016_08_07_152014_add_table_cms_privileges', 1),
-(6, '2016_08_07_152214_add_table_cms_privileges_roles', 1),
-(7, '2016_08_07_152320_add_table_cms_settings', 1),
-(8, '2016_08_07_152421_add_table_cms_users', 1),
-(9, '2016_08_07_154624_add_table_cms_menus_privileges', 1),
-(10, '2016_08_07_154624_add_table_cms_moduls', 1),
-(11, '2016_08_17_225409_add_status_cms_users', 1),
-(12, '2016_08_20_125418_add_table_cms_notifications', 1),
-(13, '2016_09_04_033706_add_table_cms_email_queues', 1),
-(14, '2016_09_16_035347_add_group_setting', 1),
-(15, '2016_09_16_045425_add_label_setting', 1),
-(16, '2016_09_17_104728_create_nullable_cms_apicustom', 1),
-(17, '2016_10_01_141740_add_method_type_apicustom', 1),
-(18, '2016_10_01_141846_add_parameters_apicustom', 1),
-(19, '2016_10_01_141934_add_responses_apicustom', 1),
-(20, '2016_10_01_144826_add_table_apikey', 1),
-(21, '2016_11_14_141657_create_cms_menus', 1),
-(22, '2016_11_15_132350_create_cms_email_templates', 1),
-(23, '2016_11_15_190410_create_cms_statistics', 1),
-(24, '2016_11_17_102740_create_cms_statistic_components', 1),
-(25, '2017_06_06_164501_add_deleted_at_cms_moduls', 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tipo_combustible`
---
-
-CREATE TABLE `tipo_combustible` (
-  `id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `descripcion` varchar(100) NOT NULL,
-  `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tipo_vehiculo`
---
-
-CREATE TABLE `tipo_vehiculo` (
-  `id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `descripcion` varchar(100) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2227,60 +2171,17 @@ INSERT INTO `ubigeo` (`id`, `departamento`, `provincia`, `distrito`, `descripcio
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `unidad_combustible`
+-- Estructura de tabla para la tabla `unidad_volumen`
 --
 
-CREATE TABLE `unidad_combustible` (
+CREATE TABLE `unidad_volumen` (
   `id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `descripcion` varchar(100) NOT NULL,
+  `descripcion` varchar(50) NOT NULL,
+  `simbolo` varchar(10) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `unidad_consumo`
---
-
-CREATE TABLE `unidad_consumo` (
-  `id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `descripcion` varchar(100) NOT NULL,
-  `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `unidad_distancia`
---
-
-CREATE TABLE `unidad_distancia` (
-  `id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `descripcion` varchar(100) NOT NULL,
-  `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `users`
---
-
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -2292,20 +2193,15 @@ CREATE TABLE `vehiculo` (
   `id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `nombre` varchar(100) NOT NULL,
-  `descripcion` varchar(100) NOT NULL,
-  `tipo_vehiculo` int(11) NOT NULL,
-  `tipo_combustible` int(11) NOT NULL,
-  `unidad_distancia` int(11) NOT NULL,
-  `unidad_combustible` int(11) NOT NULL,
-  `unidad_consumo` int(11) NOT NULL,
-  `bi_combustible` tinyint(1) NOT NULL,
+  `vehiculo_tipo` int(11) NOT NULL,
   `vehiculo_marca` int(11) NOT NULL,
   `vehiculo_modelo` int(11) NOT NULL,
-  `anio` smallint(6) NOT NULL,
-  `placa` varchar(8) NOT NULL,
-  `nro_serie` varchar(100) NOT NULL,
-  `nro_motor` varchar(100) NOT NULL,
+  `combustible_tipo` int(11) NOT NULL,
+  `placa` varchar(10) NOT NULL,
+  `anio_fabricacion` year(4) NOT NULL,
+  `soat_poliza` varchar(20) NOT NULL,
+  `soat_vigencia` date NOT NULL,
+  `soat_empresa` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2319,8 +2215,8 @@ CREATE TABLE `vehiculo_marca` (
   `id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `descripcion` varchar(100) NOT NULL,
-  `logo` varchar(100) NOT NULL,
+  `descripcion` varchar(50) NOT NULL,
+  `logo` varchar(50) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2335,7 +2231,7 @@ CREATE TABLE `vehiculo_modelo` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `vehiculo_marca` int(11) NOT NULL,
-  `descripcion` varchar(100) NOT NULL,
+  `descripcion` varchar(50) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2349,13 +2245,20 @@ CREATE TABLE `vehiculo_tipo` (
   `id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `descripcion` varchar(100) NOT NULL,
+  `descripcion` varchar(50) NOT NULL,
+  `simbolo` varchar(10) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `combustible_tipo`
+--
+ALTER TABLE `combustible_tipo`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `estacion_servicio`
@@ -2371,58 +2274,27 @@ ALTER TABLE `forma_pago`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `tipo_combustible`
---
-ALTER TABLE `tipo_combustible`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `tipo_vehiculo`
---
-ALTER TABLE `tipo_vehiculo`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `ubigeo`
 --
 ALTER TABLE `ubigeo`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `unidad_combustible`
+-- Indices de la tabla `unidad_volumen`
 --
-ALTER TABLE `unidad_combustible`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `unidad_consumo`
---
-ALTER TABLE `unidad_consumo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `unidad_distancia`
---
-ALTER TABLE `unidad_distancia`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `users`
---
-ALTER TABLE `users`
+ALTER TABLE `unidad_volumen`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `vehiculo`
 --
 ALTER TABLE `vehiculo`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tipo_vehiculo` (`vehiculo_tipo`),
+  ADD KEY `marca_vehiculo` (`vehiculo_marca`),
+  ADD KEY `modelo_vehiculo` (`vehiculo_modelo`),
+  ADD KEY `soat_empresa` (`soat_empresa`),
+  ADD KEY `combustible_tipo` (`combustible_tipo`);
 
 --
 -- Indices de la tabla `vehiculo_marca`
@@ -2448,89 +2320,50 @@ ALTER TABLE `vehiculo_tipo`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `combustible_tipo`
+--
+ALTER TABLE `combustible_tipo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `estacion_servicio`
 --
 ALTER TABLE `estacion_servicio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT de la tabla `forma_pago`
 --
 ALTER TABLE `forma_pago`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT de la tabla `tipo_combustible`
---
-ALTER TABLE `tipo_combustible`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `tipo_vehiculo`
---
-ALTER TABLE `tipo_vehiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT de la tabla `ubigeo`
 --
 ALTER TABLE `ubigeo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2077;
-
 --
--- AUTO_INCREMENT de la tabla `unidad_combustible`
+-- AUTO_INCREMENT de la tabla `unidad_volumen`
 --
-ALTER TABLE `unidad_combustible`
+ALTER TABLE `unidad_volumen`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `unidad_consumo`
---
-ALTER TABLE `unidad_consumo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `unidad_distancia`
---
-ALTER TABLE `unidad_distancia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT de la tabla `vehiculo`
 --
 ALTER TABLE `vehiculo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT de la tabla `vehiculo_marca`
 --
 ALTER TABLE `vehiculo_marca`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT de la tabla `vehiculo_modelo`
 --
 ALTER TABLE `vehiculo_modelo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT de la tabla `vehiculo_tipo`
 --
 ALTER TABLE `vehiculo_tipo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
