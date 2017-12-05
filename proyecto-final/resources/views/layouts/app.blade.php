@@ -10,11 +10,6 @@
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('vendor/metisMenu/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -26,5 +21,9 @@
 <body>
     @include('layouts.header')
     @yield('content')
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('vendor/metisMenu/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 </body>
 </html>
