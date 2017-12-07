@@ -3,9 +3,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="login-panel panel panel-primary">
                 <div class="panel-heading">Control de acceso</div>
                 <div class="panel-body">
+                @if (isset($mensaje))
+                    <p class="bg-warning">
+                        <strong>{{ $mensaje }}</strong>
+                    </p>
+                @endif
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -31,13 +36,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-info btn-block">
                                     Ingresar
                                 </button>
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <br>
+                                <a class="btn btn-default" href="{{ route('password.request') }}">
                                     Olvidaste tu clave?
                                 </a>
+                                <a class="btn btn-default" href="{{ route('register') }}">Registro</a>
                             </div>
                         </div>
                     </form>

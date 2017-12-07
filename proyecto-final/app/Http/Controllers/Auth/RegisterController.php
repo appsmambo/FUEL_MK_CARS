@@ -51,7 +51,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'required|digits|min:7',
+            'phone' => 'required|numeric|min:7',
             'profile' => 'required',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -74,4 +74,9 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /*  public function register()
+    {
+        //return view('auth.login')->with('mensaje', 'Se registraron los datos correctamente');
+    }*/
 }

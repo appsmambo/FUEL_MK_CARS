@@ -1,4 +1,4 @@
-<header class="container-fluid">
+<header>
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
@@ -11,7 +11,7 @@
                 {{ config('app.name', 'Laravel') }}
             </a>
         </div>
-        <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+        <ul class="nav navbar-top-links navbar-right">
             @guest
             <li><a href="{{ route('login') }}">Ingresar</a></li>
             <li><a href="{{ route('register') }}">Registro</a></li>
@@ -43,45 +43,22 @@
                     <li><a href="{{ route('login') }}">Ingresar</a></li>
                     <li><a href="{{ route('register') }}">Registro</a></li>
                     @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-search">
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                        </div>
-                        <!-- /input-group -->
+                    <li>
+                        <a href="{{ route('home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-table fa-fw"></i> Mantenimiento<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="flot.html">Flot Charts</a>
+                                <a href="{{ route('tipoCombustible') }}">Tipos de combustible</a>
                             </li>
                             <li>
-                                <a href="morris.html">Morris.js Charts</a>
+                                <a href="{{ route('tipoVehiculo') }}">Tipos de vehículo</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('vehiculoM/arcas') }}">Marcas</a>
+                            </li>
+                            <li>                                <a href="{{ route('vehiculo-modelos') }}">Modelos</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
