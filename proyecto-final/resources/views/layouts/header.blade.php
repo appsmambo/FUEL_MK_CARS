@@ -44,21 +44,22 @@
                     <li><a href="{{ route('register') }}">Registro</a></li>
                     @else
                     <li>
-                        <a href="{{ route('home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="{{ route('home') }}"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-table fa-fw"></i> Mantenimiento<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{ route('tipoCombustible') }}">Tipos de combustible</a>
+                                <a href="{{ route('tc_lista') }}">Tipos de combustible</a>
                             </li>
                             <li>
-                                <a href="{{ route('tipoVehiculo') }}">Tipos de vehículo</a>
+                                <a href="{{ route('tv_lista') }}">Tipos de vehículo</a>
                             </li>
                             <li>
-                                <a href="{{ route('vehiculoM/arcas') }}">Marcas</a>
+                                <a href="{{ route('vmar_lista') }}">Marcas</a>
                             </li>
-                            <li>                                <a href="{{ route('vehiculo-modelos') }}">Modelos</a>
+                            <li>
+                                <a href="{{ route('vmod_lista') }}">Modelos</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->

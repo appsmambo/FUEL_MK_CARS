@@ -10,9 +10,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/tipo-combustible', 'HomeController@getTipoCombustible')->name('tipoCombustible');
-Route::get('/tipo-vehiculo', 'HomeController@getTipoVehiculo')->name('tipoVehiculo');
-Route::get('/vehiculo-marcas', 'HomeController@getVehiculoMarcas')->name('vehiculoMarcas');
-Route::get('/vehiculo-modelo', 'HomeController@getVehiculoModelo')->name('vehiculo_Modelo');
+Route::get('/tipo-combustible', 'HomeController@getTipoCombustible')->name('tc_lista');
+Route::get('/tipo-vehiculo', 'HomeController@getTipoVehiculo')->name('tv_lista');
+Route::get('/vehiculo-marcas', 'HomeController@getVehiculoMarcas')->name('vmar_lista');
+Route::get('/vehiculo-modelos', 'HomeController@getVehiculoModelo')->name('vmod_lista');
 
 
