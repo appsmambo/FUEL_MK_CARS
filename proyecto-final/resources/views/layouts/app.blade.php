@@ -9,6 +9,7 @@
     <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/fancybox-master/dist/jquery.fancybox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,10 +20,13 @@
     <!-- Styles -->
 </head>
 <body>
+    @include('layouts.header')
     @yield('content')
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('vendor/metisMenu/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('vendor/fancybox-master/dist/jquery.fancybox.min.js') }}"></script>
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>
