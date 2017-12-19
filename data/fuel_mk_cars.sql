@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2017 a las 01:15:40
--- Versión del servidor: 10.1.28-MariaDB
--- Versión de PHP: 7.1.11
+-- Tiempo de generación: 19-12-2017 a las 11:43:39
+-- Versión del servidor: 10.1.29-MariaDB
+-- Versión de PHP: 7.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -110,7 +110,7 @@ CREATE TABLE `tipo_combustible` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `descripcion` varchar(100) NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `estado` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -124,7 +124,7 @@ CREATE TABLE `tipo_vehiculo` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `descripcion` varchar(100) NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `estado` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2275,12 +2275,22 @@ CREATE TABLE `unidad_distancia` (
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `profile` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `phone`, `profile`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Juan', 'Quintanilla', 'quintanilla.peru@gmail.com', '12345678', 'CHO', '$2y$10$3UGECKqr.Na/2Y/Talm8h.AaNSw5bnAv.GOkL0Gk469/u7ERtJqtG', NULL, '2017-12-19 10:40:38', '2017-12-19 10:40:38');
 
 -- --------------------------------------------------------
 
@@ -2321,8 +2331,15 @@ CREATE TABLE `vehiculo_marca` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `descripcion` varchar(100) NOT NULL,
   `logo` varchar(100) NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `estado` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `vehiculo_marca`
+--
+
+INSERT INTO `vehiculo_marca` (`id`, `created_at`, `updated_at`, `descripcion`, `logo`, `estado`) VALUES
+(1, '2017-12-19 10:42:54', '2017-12-19 10:42:54', 'Toyota', '1513680174.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -2336,7 +2353,7 @@ CREATE TABLE `vehiculo_modelo` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `vehiculo_marca` int(11) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `estado` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2350,7 +2367,7 @@ CREATE TABLE `vehiculo_tipo` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `descripcion` varchar(100) NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `estado` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2505,7 +2522,7 @@ ALTER TABLE `unidad_distancia`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculo`
@@ -2517,7 +2534,7 @@ ALTER TABLE `vehiculo`
 -- AUTO_INCREMENT de la tabla `vehiculo_marca`
 --
 ALTER TABLE `vehiculo_marca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculo_modelo`
