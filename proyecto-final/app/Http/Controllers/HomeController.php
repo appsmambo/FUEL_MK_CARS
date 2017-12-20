@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\TipoCombustible;
 use App\TipoVehiculo;
 use App\VehiculoMarca;
+use App\VehiculoModelo;
 
 class HomeController extends Controller
 {
@@ -96,5 +97,32 @@ class HomeController extends Controller
         }
         $vehiculoMarca->save();
         return redirect()->route('vmar_lista');
+    }
+
+    public function getVehiculoModelo()
+    {
+        $registros = VehiculoModelo::all();
+        return view('VehiculoModelo.lista')->with('data', $registros);
+    }
+    public function postVehiculoModeloAgregar(Request $request)
+    {
+        /*$validatedData = $request->validate([
+            'vehiculo_marca' => 'required|max:100',
+            'descripcion' => 'required|max:100',
+        ]);
+        $id = $request->id;
+        if ($id == 0) {
+            $vehiculoMarca = new VehiculoMarca;
+        } else {
+            $vehiculoMarca = VehiculoMarca::find($id);
+        }
+        $vehiculoMarca->descripcion = $request->descripcion;
+        if ($request->hasFile('logo')) {
+            $imageName = time().'.'.request()->logo->getClientOriginalExtension();
+            request()->logo->move(public_path('uploads/marca-vehiculo'), $imageName);
+            $vehiculoMarca->logo = $imageName;
+        }
+        $vehiculoMarca->save();
+        return redirect()->route('vmar_lista');*/
     }
 }

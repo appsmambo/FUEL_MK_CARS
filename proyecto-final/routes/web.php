@@ -21,4 +21,4 @@ Route::post('/vehiculo-marca-agregar', 'HomeController@postVehiculoMarcaAgregar'
 
 Route::get('/vehiculo-modelos', 'HomeController@getVehiculoModelo')->name('vmod_lista');
 
-
+Route::get('/estaciones', 'HomeController@getEstaciones')->name('estaciones');

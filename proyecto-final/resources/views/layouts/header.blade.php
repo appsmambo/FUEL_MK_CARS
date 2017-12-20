@@ -41,6 +41,7 @@
                 <ul class="nav" id="side-menu">
                     @guest
                     <li><a href="{{ route('login') }}">Ingresar</a></li>
+                    <li><a href="{{ route('login') }}">Ingresar</a></li>
                     <li><a href="{{ route('register') }}">Registro</a></li>
                     @else
                     <li>
@@ -60,6 +61,12 @@
                             </li>
                             <li>
                                 <a href="{{ route('vmod_lista') }}">Modelos</a>
+                            </li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li>
+                                <a href="{{ route('estaciones') }}">Estaciones</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
