@@ -2,23 +2,22 @@
 @section('content')
 <div id="page-wrapper">
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Inicio</h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    You are logged in!
+        <div class="col-xs-12">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label class="sr-only" for="exampleInputEmail3">Filtro:</label>
+                    <select name="" class="form-control" id="exampleInputEmail3">
+                        <option>-Seleccione-</option>
+                        <option>Motos</option>
+                        <option>Camionetas</option>
+                        <option>Camiones</option>
+                        <option>Minivan</option>
+                        <option>Buses</option>
+                    </select>
                 </div>
+            </form>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe allowfullscreen class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7802.267941427566!2d-77.0316324285278!3d-12.102979769335066!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sus!4v1516140598582"></iframe>
             </div>
         </div>
     </div>
